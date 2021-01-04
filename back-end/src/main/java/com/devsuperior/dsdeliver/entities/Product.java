@@ -78,12 +78,12 @@ public class Product implements Serializable{
 	}
 
 
-	public String getImgUri() {
+	public String getImageUri() {
 		return imageUri;
 	}
 
 
-	public void setImgUri(String imageUri) {
+	public void setImageUri(String imageUri) {
 		this.imageUri = imageUri;
 	}
 
