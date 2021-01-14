@@ -10,6 +10,4 @@ Projeto desenvolvido para complementar meus conhecimentos, com uso das tecnologi
 
 Após o término de todas etapas, a parte web foi colocada no ar a partir do Heroku e Netlify.
 
-https://delivery-sds2.netlify.app
-
-OBS: Heroku entra em dormência após alguns minutos, por isso o banco demora alguns segundos para carregar! 
+Link do projeto: https://delivery-sds2.netlify.app
