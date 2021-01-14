@@ -11,6 +11,7 @@ import "./styles.css";
 import { OrderLocationData, Product } from "./types";
 
 function Orders() {
+    const [isLoading, setIsLoading] = useState(false);
     const [products, setProducts] = useState<Product[]>([]);
     const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
     const [orderLocation, setOrderLocation] = useState<OrderLocationData>(); 
@@ -19,7 +20,8 @@ function Orders() {
     }, 0);
 
     useEffect(() => {
-        fetchProducts().then(response => setProducts(response.data)).catch(error => console.log(error));
+        setIsLoading(true);
+        fetchProducts().then(response => setProducts(response.data)).catch(error => console.log(error)).finally(() => setIsLoading(false));
     }, []);
 
     const handleSelectProduct = (product: Product) => {
@@ -53,7 +55,9 @@ function Orders() {
         <>
             <div className="orders-container">
                 <StepsHeaders />
-                <ProductsList products={products} onSelectProduct={handleSelectProduct} selectedProducts={selectedProducts} />
+                {isLoading ? 
+                    <p>Buscando pedidos...</p> : <ProductsList products={products} onSelectProduct={handleSelectProduct} selectedProducts={selectedProducts} />
+                }
                 <OrderLocation onChangeLocation={location => setOrderLocation(location)} />
                 <OrderSummary amount={selectedProducts.length} totalPrice={totalPrice} onSubmit={handleSubmit}/>
                 <Footer />
